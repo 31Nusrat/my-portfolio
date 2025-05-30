@@ -1,0 +1,83 @@
+.coding-profiles-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #1c1c1c, #2d2d2d);
+  padding: 4rem 2rem;
+  color: white;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.coding-profiles-section.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.coding-profiles-section h2 {
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  color: #ff6f00;
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: opacity 1s ease 0.2s, transform 1s ease 0.2s;
+}
+
+.coding-profiles-section.animate h2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.profiles-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 400px;
+}
+.profiles-grid a {
+  text-decoration: none;
+  font-size: 1.4rem;
+  padding: 1rem 2rem;
+  background-color: #2f2f2f;
+  border-radius: 12px;
+  color: white;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 4px 10px rgba(255, 111, 0, 0.3);
+
+  opacity: 0;
+  transform: translateX(-60px) scale(1);
+  transition: 
+    transform 0.8s ease,
+    opacity 0.8s ease,
+    box-shadow 0.3s ease;
+}
+
+.profiles-grid a:nth-child(even) {
+  transform: translateX(60px) scale(1);
+}
+
+.coding-profiles-section.animate .profiles-grid a {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+.profiles-grid a:hover {
+  background-color: #3c3c3c;
+  box-shadow: 0 6px 20px rgba(255, 111, 0, 0.5);
+  transform: scale(1.03);
+
+}
+
+.icon {
+  font-size: 1.6rem;
+  color: #ff6f00;
+}
