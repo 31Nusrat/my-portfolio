@@ -1,34 +1,35 @@
-
 .section {
-  min-height: 100vh;   /* Fill full viewport height */
-  width: 100vw;        /* Fill full viewport width */
-  box-sizing: border-box; /* Include padding/borders in width/height */
-  overflow-x: hidden;  /* Prevent horizontal scroll */
-  display: flex;       /* Optional: for flex layouts */
+  height: 100vh;
+  width: 100%; /* Changed from 100vw to 100% to avoid horizontal scroll */
+  box-sizing: border-box;
+  overflow-x: hidden;
+  display: flex;
   flex-direction: column;
 }
 
 .hero {
-  height: 100vh;
+  /* Changed height: 100vh to min-height for better mobile compatibility */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+    padding-top: 65px; /* or margin-top: 65px; */
   align-items: center;
   background: linear-gradient(135deg, #1f1f1f 0%, #3c3c3c 100%);
   color: white;
   text-align: center;
-  padding: 0 20px;
+  padding: 40px 20px; /* Added top-bottom padding for breathing room */
 
   /* Initial state for fade + slide in */
   opacity: 0;
   transform: translateY(20px);
+  /* margin-top: 100px; */
 
   /* Animate fade + slide in */
   animation: fadeSlideIn 1s ease forwards;
   animation-delay: 0.3s;
 }
 
-/* Keyframes for fade + slide up */
 @keyframes fadeSlideIn {
   to {
     opacity: 1;
@@ -39,22 +40,19 @@
 .hero h1 {
   font-size: 4rem;
   margin-bottom: 0.5rem;
-  min-height: 5rem; /* Prevent jump while typing */
+  min-height: 5rem;
+  word-break: break-word; /* Ensure long names break properly */
 }
 
 .hero p {
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
 
-  /* Start invisible */
   opacity: 0;
-
-  /* Fade in animation */
   animation: fadeIn 1s ease forwards;
   animation-delay: 1.5s;
 }
 
-/* Keyframes for fade in */
 @keyframes fadeIn {
   to {
     opacity: 1;
@@ -70,39 +68,25 @@
   color: white;
   cursor: pointer;
 
-  /* Smooth transitions for background, shadow and transform */
-  transition: background-color 0.3s ease, box-shadow 0.2s ease, transform 0.1s ease;
-
-  /* Soft initial shadow */
+  transition: background-color 0.3s ease, box-shadow 0.2s ease,
+    transform 0.1s ease;
   box-shadow: 0 4px 15px rgba(255, 111, 0, 0.4);
-
   outline: none;
-
-  /* Reset transform */
   transform: translateY(0);
 }
 
-/* Hover style - glow pulse + lift */
 .hero button:hover {
   animation: glowPulse 1.5s infinite alternate;
-
-  /* Darker gradient on hover */
   background: linear-gradient(90deg, #ff7a00, #e65a00);
-
-  /* Stronger glowing shadow */
   box-shadow: 0 12px 40px rgba(255, 111, 0, 1);
-
-  /* Slight upward movement */
   transform: translateY(-4px);
 }
 
-/* Active (click) style - keep lifted with strong shadow */
 .hero button:active {
   transform: translateY(-4px);
   box-shadow: 0 8px 25px rgba(255, 111, 0, 0.9);
 }
 
-/* Glow pulse animation for button */
 @keyframes glowPulse {
   0% {
     box-shadow: 0 6px 20px rgba(255, 111, 0, 0.6);
@@ -112,32 +96,28 @@
   }
 }
 
-/* Typing name effect styles */
 .typed-name {
   color: white;
-
-  /* The blinking caret on the right */
   border-right: 2px solid white;
   animation: blinkCaretColor 1s step-end infinite;
-
-  /* Float animation to move text up and down */
   display: inline-block;
   animation: floatText 3s ease-in-out infinite;
+  word-break: break-word; /* Also ensure no overflow */
 }
 
-/* Blinking caret color change */
 @keyframes blinkCaretColor {
-  0%, 100% {
+  0%,
+  100% {
     border-color: white;
   }
   50% {
-    border-color: #ff6f00; /* Orange */
+    border-color: #ff6f00;
   }
 }
 
-/* Floating text up/down */
 @keyframes floatText {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -145,29 +125,28 @@
   }
 }
 
-@media(max-width:480px)
-{
-  .hero{
-    height:auto;
+/* MOBILE FIXES */
+@media (max-width: 480px) {
+  .hero {
+    min-height: calc(100vh - 65px); /* Let height grow naturally */
+
     padding: 40px 20px;
   }
-  .hero h1{
+  .hero h1 {
     font-size: 2rem;
     min-height: 3rem;
   }
-
-  .hero p{
+  .hero p {
     font-size: 1.1rem;
     margin-bottom: 1.2rem;
-
   }
-  .hero button{
+  .hero button {
     font-size: 1rem;
     padding: 10px 20px;
     width: 100%;
-    max-width:300px;
+    max-width: 300px;
   }
-  .typed-name{
+  .typed-name {
     font-size: 1.8rem;
     border-right: 1.5px solid white;
   }

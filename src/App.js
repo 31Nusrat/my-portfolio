@@ -5,6 +5,7 @@ import NavBar from './components/NavBar'
 import Project from './components/Project'
 import CodingPlatform from './components/CodingPlatform'
 import Contact from './components/Contact'
+import './App.css'
 
 const App = () => {
   return (

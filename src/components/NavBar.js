@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "./NavBar.css";
 import {
   FaHome,
@@ -12,13 +12,14 @@ const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
 
-  const navItems = [
+  // Memoize navItems to avoid recreating on every render
+  const navItems = useMemo(() => [
     { id: "hero", label: "Home", icon: <FaHome className="nav-icon" /> },
     { id: "about", label: "About", icon: <FaUser className="nav-icon" /> },
     { id: "projects", label: "Projects", icon: <FaProjectDiagram className="nav-icon" /> },
     { id: "coding-profiles", label: "Coding Profiles", icon: <FaCode className="nav-icon" /> },
     { id: "contact", label: "Contact", icon: <FaEnvelope className="nav-icon" /> },
-  ];
+  ], []);
 
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
@@ -30,13 +31,12 @@ const NavBar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navItems.map((item) => item.id);
-      for (let id of sections) {
-        const sec = document.getElementById(id);
+      for (let item of navItems) {
+        const sec = document.getElementById(item.id);
         if (sec) {
           const rect = sec.getBoundingClientRect();
           if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveSection(id);
+            setActiveSection(item.id);
             break;
           }
         }

@@ -2,7 +2,7 @@
 
 Welcome to my personal **React Developer Portfolio**! This site showcases my skills, projects, coding profiles, and how to get in touch — all in a smooth, responsive, and elegant design.
 
-🔗 **Live Demo**: [stirring-starburst-d9a8b1.netlify.app](https://stirring-starburst-d9a8b1.netlify.app/)
+🔗 **Live Demo**: [stirring-starburst-d9a8b1.netlify.app](https://wondrous-sawine-e854fa.netlify.app/)
 
 ---
 
